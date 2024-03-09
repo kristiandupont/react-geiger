@@ -1,7 +1,12 @@
 {
   "name": "react-geiger",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Audiolize React performance",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kristiandupont/react-geiger.git"
+  },
+  "homepage": "https://github.com/kristiandupont/react-geiger",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -19,9 +24,7 @@
     "url": "http://www.kristiandupont.com"
   },
   "files": [
-    "dist/",
-    "logo.png",
-    "not-great-not-terrible.jpg"
+    "dist/"
   ],
   "license": "ISC",
   "devDependencies": {
