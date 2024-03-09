@@ -2,7 +2,9 @@
 
 <img src="./logo.png" height="100">
 
-React Geiger is a tool for "audiolizing" React performance issues. You can have it running in the background and clicks will point your attention to excessive (slow) component rerenders.
+React Geiger is a tool for "audiolizing" React performance issues. You can have it running in the background and makes little clicks which will point your attention to excessive (slow) component rerenders.
+
+Play with it in this [playground](https://playcode.io/1793073)
 
 ## Installation
 
