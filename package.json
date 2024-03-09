@@ -1,0 +1,36 @@
+{
+  "name": "react-geiger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "lint": "eslint . -f visualstudio --report-unused-disable-directives --ext .ts,.tsx"
+  },
+  "keywords": [
+    "react",
+    "performance",
+    "profiling"
+  ],
+  "author": {
+    "name": "Kristian Dupont",
+    "url": "http://www.kristiandupont.com"
+  },
+  "files": [
+    "dist/"
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "@kristiandupont/dev-deps": "^2.24.0",
+    "@kristiandupont/dev-deps-react": "^1.7.0",
+    "@tsconfig/recommended": "^1.0.3"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0"
+  },
+  "dependencies": {
+    "@tsconfig/vite-react": "^3.0.1"
+  }
+}
