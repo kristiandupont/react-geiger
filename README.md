@@ -20,7 +20,7 @@ The most basic setup is wrapping your entire app:
 
 ```tsx
 <Geiger>
-  <App>
+  <App />
 </Geiger>
 ```
 
