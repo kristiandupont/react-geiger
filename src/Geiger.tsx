@@ -8,6 +8,22 @@ import {
   useState,
 } from "react";
 
+function playGeigerSoundFile(
+  audioContext: AudioContext,
+  src: string,
+  amplitude: number
+) {
+  const audioElement = new Audio(src);
+  const audioSource = audioContext.createMediaElementSource(audioElement);
+  audioSource.connect(audioContext.destination);
+  audioElement.volume = amplitude;
+  //  Limit audio to 1s
+  audioElement.play();
+  setTimeout(() => {
+    audioElement.pause();
+    audioElement.currentTime = 0;
+  }, 1000);
+}
 function playGeigerClickSound(audioContext: AudioContext, amplitude: number) {
   const volume = Math.max(0.5, amplitude);
   const duration = 0.001;
@@ -56,6 +72,7 @@ const Geiger: FC<{
   renderTimeThreshold?: number;
   phaseOption?: PhaseOption;
   enabled?: boolean;
+  customSound?: string;
   children: ReactNode;
 }> = ({
   profilerId = "geiger",
@@ -63,6 +80,7 @@ const Geiger: FC<{
   phaseOption = "both",
   enabled = true,
   children,
+  customSound,
 }) => {
   const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
 
@@ -77,7 +95,13 @@ const Geiger: FC<{
           1,
           (actualDuration - renderTimeThreshold) / (renderTimeThreshold * 2)
         );
-        playGeigerClickSound(audioContext, amplitude);
+
+        if (customSound && typeof customSound == "string") {
+          if (customSound === "") {
+            console.warn("The sound file path is empty");
+          }
+          playGeigerSoundFile(audioContext, customSound, amplitude);
+        } else playGeigerClickSound(audioContext, amplitude);
       }
     },
     [audioContext, phaseOption, renderTimeThreshold]
