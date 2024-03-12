@@ -11,7 +11,7 @@ import {
 function playGeigerSoundFile(
   audioContext: AudioContext,
   src: string,
-  amplitude: number,
+  amplitude: number
 ) {
   const audioElement = new Audio(src);
   const audioSource = audioContext.createMediaElementSource(audioElement);
@@ -24,6 +24,7 @@ function playGeigerSoundFile(
     audioElement.currentTime = 0;
   }, 1000);
 }
+
 function playGeigerClickSound(audioContext: AudioContext, amplitude: number) {
   const volume = Math.max(0.5, amplitude);
   const duration = 0.001;
@@ -34,7 +35,7 @@ function playGeigerClickSound(audioContext: AudioContext, amplitude: number) {
   oscillator.frequency.setValueAtTime(startFrequency, audioContext.currentTime);
   oscillator.frequency.exponentialRampToValueAtTime(
     220,
-    audioContext.currentTime + duration,
+    audioContext.currentTime + duration
   );
 
   const gainNode = audioContext.createGain();
@@ -58,6 +59,7 @@ type PhaseOption = "mount" | "update" | "both";
  * @param {string} [profilerId="geiger"] - The id of the Profiler component.
  * @param {number} [renderTimeThreshold=50] - The threshold in milliseconds.
  * @param {PhaseOption} [phaseOption="both"] - The phase to listen for (mount, update, or both).
+ * @param {string} [customSound] - The path to a custom sound file, if you want to replace the default
  * @param {boolean} [enabled=true] - Whether Geiger is enabled.
  *
  * @example
@@ -71,16 +73,16 @@ const Geiger: FC<{
   profilerId?: string;
   renderTimeThreshold?: number;
   phaseOption?: PhaseOption;
-  enabled?: boolean;
   customSound?: string;
+  enabled?: boolean;
   children: ReactNode;
 }> = ({
   profilerId = "geiger",
   renderTimeThreshold = 50,
   phaseOption = "both",
+  customSound,
   enabled = true,
   children,
-  customSound,
 }) => {
   const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
 
@@ -93,7 +95,7 @@ const Geiger: FC<{
       ) {
         const amplitude = Math.min(
           1,
-          (actualDuration - renderTimeThreshold) / (renderTimeThreshold * 2),
+          (actualDuration - renderTimeThreshold) / (renderTimeThreshold * 2)
         );
 
         if (customSound && typeof customSound == "string") {
@@ -104,7 +106,7 @@ const Geiger: FC<{
         } else playGeigerClickSound(audioContext, amplitude);
       }
     },
-    [audioContext, phaseOption, renderTimeThreshold],
+    [audioContext, phaseOption, renderTimeThreshold]
   );
 
   useEffect(() => {
@@ -118,7 +120,7 @@ const Geiger: FC<{
         setAudioContext(audioContext);
       } else {
         console.warn(
-          "Geiger: AudioContext did not start. To enable Geiger, you need to give permission to play audio on this page.",
+          "Geiger: AudioContext did not start. To enable Geiger, you need to give permission to play audio on this page."
         );
       }
     }

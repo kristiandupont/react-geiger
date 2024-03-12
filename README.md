@@ -32,12 +32,14 @@ The options are:
   profilerId?: string;
   renderTimeThreshold?: number;
   phaseOption?: PhaseOption;
+  customSoundFile?: string
   enabled?: boolean;
 ```
 
 - `profilerId` is an id that will be passed on to the `React.Profiler` component. You probably don't need to change this.
 - `renderTimeThreshold` is the time in milliseconds that will trigger a click. Default is 50ms. Set to 0 to make any re-render click
 - `phaseOption` is the phase of the render you want to track, either `'mount'`, `'update'` or `'both'` (which is the default)
+- `customSoundFile` path to a custom sound file, if you want to use something else than the default click sound
 - `enabled` defaults to true, but you can use this to disable it. Note that it relies on `React.Profiler` under the hood, which is disabled in production builds per default.
 
 ![Not Great, Not Terrible](./not-great-not-terrible.jpg)
