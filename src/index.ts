@@ -1,1 +1,1 @@
-export { default as Geiger } from "./Geiger";
+export { default as Geiger, playGeigerClickSound } from "./Geiger";

@@ -25,7 +25,10 @@ function playGeigerSoundFile(
   }, 1000);
 }
 
-function playGeigerClickSound(audioContext: AudioContext, amplitude: number) {
+export function playGeigerClickSound(
+  audioContext: AudioContext,
+  amplitude: number,
+): void {
   const volume = Math.max(0.5, amplitude);
   const duration = 0.001;
   const startFrequency = 440 + amplitude * 200;
