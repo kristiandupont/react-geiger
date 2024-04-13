@@ -11,7 +11,7 @@ import {
 function playGeigerSoundFile(
   audioContext: AudioContext,
   src: string,
-  amplitude: number
+  amplitude: number,
 ) {
   const audioElement = new Audio(src);
   const audioSource = audioContext.createMediaElementSource(audioElement);
@@ -35,7 +35,7 @@ function playGeigerClickSound(audioContext: AudioContext, amplitude: number) {
   oscillator.frequency.setValueAtTime(startFrequency, audioContext.currentTime);
   oscillator.frequency.exponentialRampToValueAtTime(
     220,
-    audioContext.currentTime + duration
+    audioContext.currentTime + duration,
   );
 
   const gainNode = audioContext.createGain();
@@ -95,7 +95,7 @@ const Geiger: FC<{
       ) {
         const amplitude = Math.min(
           1,
-          (actualDuration - renderTimeThreshold) / (renderTimeThreshold * 2)
+          (actualDuration - renderTimeThreshold) / (renderTimeThreshold * 2),
         );
 
         if (customSound && typeof customSound == "string") {
@@ -106,7 +106,7 @@ const Geiger: FC<{
         } else playGeigerClickSound(audioContext, amplitude);
       }
     },
-    [audioContext, phaseOption, renderTimeThreshold]
+    [audioContext, phaseOption, renderTimeThreshold],
   );
 
   useEffect(() => {
@@ -120,7 +120,7 @@ const Geiger: FC<{
         setAudioContext(audioContext);
       } else {
         console.warn(
-          "Geiger: AudioContext did not start. To enable Geiger, you need to give permission to play audio on this page."
+          "Geiger: AudioContext did not start. To enable Geiger, you need to give permission to play audio on this page.",
         );
       }
     }
