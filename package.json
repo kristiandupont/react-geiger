@@ -28,7 +28,7 @@
   ],
   "license": "ISC",
   "devDependencies": {
-    "@kristiandupont/dev-deps": "^2.24.0",
+    "@kristiandupont/dev-deps": "^3.0.0",
     "@kristiandupont/dev-deps-react": "^1.7.0",
     "@tsconfig/recommended": "^1.0.3"
   },
